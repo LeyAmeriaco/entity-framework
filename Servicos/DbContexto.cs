@@ -8,6 +8,6 @@ namespace EntityFrameWork.Servicos
     {
         public DbContexto(DbContextOptions<DbContexto> options) : base(options){}
         public DbSet<Cliente> Clientes {get; set;}
-        public DbSet<EntityFrameWork.Models.Produto> Produto { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
     }
 }

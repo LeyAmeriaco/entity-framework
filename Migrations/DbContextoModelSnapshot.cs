@@ -44,6 +44,37 @@ namespace EntityFrameWork.Migrations
 
                     b.ToTable("clientes");
                 });
+
+            modelBuilder.Entity("EntityFrameWork.Models.Produto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("text")
+                        .HasColumnName("descricao");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("nome");
+
+                    b.Property<string>("UrlImagem")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("imagem");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("double")
+                        .HasColumnName("valor");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("produtos");
+                });
 #pragma warning restore 612, 618
         }
     }
