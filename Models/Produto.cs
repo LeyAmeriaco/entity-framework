@@ -20,18 +20,12 @@ namespace EntityFrameWork.Models
         [MaxLength(255)]
         [Column("imagem")]
         public string UrlImagem {get; set;}
-
-
+        
         [Required]
         [Column("valor")]
         public double Valor {get; set;}
-
-        
       
         [Column("descricao",TypeName ="text")]
         public string Descricao {get; set;}
-
-       
-        
     }
 }

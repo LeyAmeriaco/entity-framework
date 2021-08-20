@@ -8,6 +8,9 @@ namespace EntityFrameWork.Servicos
     {
         public DbContexto(DbContextOptions<DbContexto> options) : base(options){}
         public DbSet<Cliente> Clientes {get; set;}
+        public DbSet<Endereco> Enderecos {get; set;}
+        public DbSet<Pedido> Pedidos {get; set;}
+        public DbSet<PedidoProduto> PedidosProdutos {get; set;}
         public DbSet<Produto> Produtos { get; set; }
     }
 }
