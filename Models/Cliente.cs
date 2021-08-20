@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFrameWork.Models
 {
+    [Table("clientes")]
     public class Cliente
     {
         [Key]
