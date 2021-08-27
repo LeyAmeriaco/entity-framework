@@ -22,7 +22,27 @@ namespace EntityFrameWork.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
+            //O Entity so faz o comando quando é colocado o ToListAsync();
+
+            //Quando eu faço isso é a mesma coisa de fazer um Select * from
+            //var listaDeClientes = await _context.Clientes.ToListAsync();
+
+            //para trazer uma quantidade de clientes => colocamos take e a quantidade similar à Select * from limit 5
+            //var listaDeCincoClientes = await _context.Clientes.Take(5).ToListAsync();
+            
+            //Fazendo um Where no banco de Dados
+            //var listaDeClientesWhere = await _context.Clientes.Where(c => c.Id == 6).ToListAsync();
+            
+            //buscando dados entre intervalos no banco de Dados
+            //var listaDeClientesIntervalo = await _context.Clientes.Where(c => c.Id >= 1 && c.Id <= 4).ToListAsync();
+
+            //buscando dados que contem alguma palavra no banco de Dados similiar ao like do sql
+            var listaDeClientesContatin = await _context.Clientes.Where(c => c.Nome.ToLower().Contains("d")).ToListAsync();
+
+
+            //fala que quando for dar select na tabela de clientes incluir o endereço tambem(fazer um inner join na tabela endereço)
             var dbContexto = _context.Clientes.Include(c => c.Endereco);
+            // Buscando os dados
             return View(await dbContexto.ToListAsync());
         }
 
@@ -61,7 +81,7 @@ namespace EntityFrameWork.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cliente);
+                _context.Clientes.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
